@@ -1,0 +1,15 @@
+package LogIn;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		IDandPassword idandpass = new IDandPassword();
+		
+		idandpass.getlogininfo();
+		
+		LogInPage loginpage = new LogInPage(idandpass.getlogininfo());
+
+	}
+
+}

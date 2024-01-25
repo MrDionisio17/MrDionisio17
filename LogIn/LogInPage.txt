@@ -1,0 +1,159 @@
+package LogIn;
+
+import java.awt.Color;
+import javafx.scene.*;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.ActionEvent	;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javafx.scene.image.Image;
+
+public class LogInPage implements ActionListener{
+	
+	
+	JFrame frame = new JFrame();
+	JButton loginbutton = new JButton("Login");
+	JButton resetbutton = new JButton("Reset");
+	JTextField userIDField = new JTextField();
+	JPasswordField userpassword = new JPasswordField();
+	JLabel userIDLabel = new JLabel("User ID");
+	JLabel passwordLabel = new JLabel("Password");
+	JLabel messageLabel = new JLabel("Please Log In");
+	JLabel welcome = new JLabel("ADMIN");
+	JPanel USIDpanel = new JPanel();// User ID panel
+	JPanel PLpanel = new JPanel();// password label panel
+	JPanel BGpanel = new JPanel();// background panel
+	JPanel Wpanel = new JPanel();//welcome panel
+	JPanel user = new JPanel();//user id background
+	ImageIcon icon = new ImageIcon("logo.png");//image icon/logo
+	ImageIcon image = new ImageIcon("background.jpg");
+	JLabel background = new JLabel(image);
+	Font myFont = new Font("Microsoft JhengHei UI",Font.BOLD,30);
+	Border border = BorderFactory.createLineBorder(Color.BLACK,2);
+	
+	
+	
+	HashMap<String,String> logininfo = new HashMap<String,String>();
+	
+	public LogInPage(HashMap<String, String>logininfoOriginal){
+		logininfo = logininfoOriginal;
+		
+		
+		
+		//user id
+		userIDLabel.setBounds(50,100,75,25);
+		userIDLabel.setFont(new Font("Microsoft JhengHei UI", Font.BOLD,15));
+		//userIDLabel.setOpaque(true);
+		userIDLabel.setHorizontalTextPosition(JLabel.CENTER);
+		userIDLabel.setForeground(Color.black);
+		//userIDLabel.setBorder(border);
+		
+		//password
+		passwordLabel.setBounds(50,150,75,25);
+		//passwordLabel.setForeground(new Color(0,0,0,60));
+		passwordLabel.setFont(new Font("Microsoft JhengHei UI", Font.BOLD,15));
+		passwordLabel.setBackground(new Color(	226,	222	,222));
+		passwordLabel.setForeground(Color.black);
+		passwordLabel.setFocusable(true);
+		passwordLabel.setHorizontalTextPosition(JLabel.CENTER);
+		//passwordLabel.setBorder(border);
+		
+		
+		messageLabel.setBounds(50, 220, 600, 100); // x y width height
+		//messageLabel.setBounds(130,250,140,100);
+		messageLabel.setFont(new Font("Microsoft JhengHei UI", Font.BOLD,18));
+		messageLabel.setForeground(Color.black);
+		//messageLabel.setOpaque(true);
+		//messageLabel.setBorder(border);
+		
+		//My Chemical Romance
+		welcome.setBounds(150,50,200,25);
+		welcome.setFont(new Font("Microsoft JhengHei UI", Font.BOLD,20));
+		
+		background.setIcon(image);
+		//background.setSize(50,50);
+		background.setBounds(0,0, 420, 420);
+		//background.setHorizontalAlignment(JLabel.CENTER);
+
+
+		userIDField.setBounds(125,100,200,25);
+		userIDField.setBackground(new Color (	255	,255,	255));
+		userpassword.setBounds(125,150,200,25);
+		
+		loginbutton.setBounds(125,200,100,25);
+		loginbutton.setFocusable(true);
+		loginbutton.addActionListener(this);
+		resetbutton.setBounds(235,200,100,25);
+		resetbutton.setFocusable(true);
+		resetbutton.addActionListener(this);
+		
+		
+		frame.getContentPane().setBackground(new Color(230,243,252));
+		frame.setBackground(new Color(0, 23,250));
+		//frame.add(BGpanel);
+		frame.setBounds(500,200, 420, 420);
+		frame.setTitle("Student Information System");//title	
+		frame.setVisible(true);
+		frame.setIconImage(icon.getImage());
+		frame.add(resetbutton);
+		frame.add(welcome);
+		//frame.add(background);// picture
+		frame.add(loginbutton);
+		frame.add(userIDField);	
+		frame.add(userpassword);
+		frame.add(messageLabel);
+		frame.add(userIDLabel);
+		frame.add(passwordLabel);
+		frame.add(PLpanel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+		frame.setSize(420,420);
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.setResizable(true);//resize 
+		frame.add(background);
+		
+		
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource()==resetbutton) {
+			userIDField.setText("");
+			userpassword.setText("");
+		}
+		
+		if(e.getSource()==loginbutton) {
+			
+			String userID = userIDField.getText();
+			String password = String.valueOf(userpassword.getPassword());
+			
+			if(logininfo.containsKey(userID)) {
+				if(logininfo.get(userID	).equals(password)) {
+					messageLabel.setForeground(Color.green);
+					messageLabel.setText("Login successful");
+					frame.dispose();
+					WelcomePage welcomePage = new WelcomePage();
+				}
+				else {
+					messageLabel.setForeground(new Color(156,1,1));
+					messageLabel.setText("Wrong password");
+				}
+
+			}
+			else {
+				messageLabel.setForeground(new Color(156,1,1));
+				messageLabel.setText("Invalid PASSWORD or USERNAME");
+			}
+		}
+	}
+	
+		
+	
+
+}

@@ -1,0 +1,142 @@
+package LogIn;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+public class WelcomePage implements ActionListener{
+	
+
+	JFrame frame = new JFrame("Homepage");
+	JButton homeButton = new JButton("Home");
+	JButton jButton = new JButton();
+	JButton contactButton = new JButton("Contact");
+	JButton courseButton = new JButton("Course");
+	ImageIcon icon = new ImageIcon("calendar-2023.png");
+    JLabel calendar = new JLabel(icon);
+    ImageIcon image = new ImageIcon("Logo.png");
+    JLabel label = new JLabel();
+    JButton logout = new JButton("Log out");
+       
+       public WelcomePage(){
+    	   
+    	   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	   frame.setSize(1700, 900);
+   		    frame.setBounds(400, 10, 1000, 800);
+           frame.setTitle("Homepage");
+           frame.setVisible(true);
+           frame.getContentPane().setBackground(new Color (0xe0f7fa));
+           frame.add(label);
+           frame.setIconImage(image.getImage());
+           frame.setVisible(true);
+           frame.add(contactButton);    
+           frame.add(courseButton);
+           frame.add(homeButton);
+           frame.add(calendar);
+          //frame.add(logout);
+           frame.setVisible(true);
+
+    	   
+    	   //University label
+    	   label.setText("UNIVERSITY");
+	       label.setIcon(image);
+	       label.setVerticalTextPosition(JLabel.BOTTOM);
+	       label.setHorizontalTextPosition(JLabel.CENTER);
+	       label.setVerticalAlignment(JLabel.TOP);
+	       label.setIcon(new ImageIcon(new ImageIcon("Logo.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
+	       
+	       // calendar
+	       /*calendar.setSize(80, 40);
+	       calendar.setBounds(500, 550, 100, 40); // x y width height
+	       calendar.setVisible(true);
+	       calendar.setFocusable(true);
+	      
+	       calendar.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+	       calendar.setAlignmentY(700);
+	       */
+	       
+	       homeButton.setSize(80,20);
+	       homeButton.setBounds(110, 5, 80, 20); // x y width height
+	       homeButton.setVisible(true);
+	       homeButton.setFocusable(true); 
+	       
+	       courseButton.setSize(80,20);
+	       courseButton.setBounds(200, 5, 80, 20); // x y width height
+	       courseButton.setVisible(true);
+	       courseButton.setFocusable(true);
+	       
+	       logout.setSize(80,20);
+	       logout.setBounds(290, 5, 80, 20); // x y width height
+	       logout.setVisible(true);
+	       logout.setFocusable(true);
+	        
+	       
+	       
+	       homeButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                if (e.getSource()==homeButton) {
+	                    JOptionPane.showMessageDialog(frame, "Go to Home");
+	                    // Add code to navigate to the home page for a logged-in user
+	                } else {
+	                    System.out.println("Redirecting to login page...");
+	                    // Add code to navigate to the login page for a user not logged in
+	                }
+	            }
+	        });
+	        
+	        
+	        contactButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                if (e.getSource()==contactButton) {
+	                   JOptionPane.showMessageDialog(frame, "Go to contact");
+	                    // Add code to navigate to the home page for a logged-in user
+	                } else {
+	                    System.out.println("Redirecting to login page...");
+	                    // Add code to navigate to the login page for a user not logged in
+	                }
+	            }
+	        });
+	        courseButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                frame.dispose();
+	                CoursePage coursepage = new CoursePage();
+	            }
+	        });
+	        
+	        logout.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int option = JOptionPane.showConfirmDialog(null, "Do you Log Out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+					
+					if (option == JOptionPane.YES_OPTION) {
+						frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+			            frame.dispose();
+					}
+					else if (option == JOptionPane.NO_OPTION) {
+			            System.out.println("You're going back to the page");
+			            
+			        }
+					
+				}
+	        	
+	        });
+	        
+
+       }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,171 @@
+package LogIn;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import BSCPEYearLevels.BSCPE_1st_Year;
+import BSCPEYearLevels.BSCPE_2nd_Year;
+import BSCPEYearLevels.BSCPE_3rd_Year;
+import BSCPEYearLevels.BSCPE_4th_Year;
+
+public class BSCPE implements ActionListener {
+	JFrame frame = new JFrame();
+	
+	JButton logout = new JButton("Log out");
+	JButton home = new JButton("Home");
+	 JButton coursesButton = new JButton("Courses");
+	 
+	//year level
+		JButton Y1 = new JButton("1st Year");
+		JButton Y2 = new JButton("2nd Year");
+		JButton Y3 = new JButton("3rd Year");
+		JButton Y4 = new JButton("4th Year");
+	
+	JPanel panel = new JPanel();
+	
+	ImageIcon logo = new ImageIcon("Logo1.png");
+	
+	ImageIcon rog = new ImageIcon("ROG.png");
+	JLabel background = new JLabel(rog);
+	
+	BSCPE(){
+		
+		 // background.setIcon(rog);
+			//background.setSize(50,50);
+			//background.setBounds(0,0, 1568, 900);
+			//background.setHorizontalAlignment(JLabel.CENTER);
+		frame.setTitle("BSCPE");
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+		frame.setIconImage(logo.getImage());
+		frame.setResizable(true);
+        frame.setLocationRelativeTo(null);
+
+		frame.setSize(1700, 900);
+		frame.setBounds(0, 0, 1568, 900);
+		frame.setLayout(null);
+	    frame.setIconImage(logo.getImage());
+	    frame.add(logout);
+	    frame.add(home);
+	    frame.add(coursesButton);
+	    frame.getContentPane().add(background);
+	    
+	    
+	    //frame.add(background);
+	  
+	    
+	    frame.add(Y1);
+	    frame.add(Y2);
+	    frame.add(Y3);
+	    frame.add(Y4);
+	  
+	 	home.setSize(400, 50);
+	  	home.setBounds(10, 20, 90, 20);
+	  	home.setFocusable(true);
+	 	home.addActionListener(this);
+	 	
+	 	coursesButton.setSize(400, 50);
+	 	coursesButton.setBounds(105, 20, 90, 20); // x y width height
+	 	coursesButton.setFocusable(true);
+	  	coursesButton.addActionListener(this);
+	  	
+	  	
+	  		logout.setSize(400,50);
+	  		logout.setBounds(200, 20, 90, 20); // x y width height
+	  		logout.setFocusable(true);
+	  		logout.addActionListener(this);
+	  		
+	  		 //background.setIcon(rog);
+				//background.setSize(50,50);
+				//background.setBounds(0,0, 1568, 900);
+				//background.setHorizontalAlignment(JLabel.CENTER);
+	  		
+	  		//year level
+	  		
+	  		Y1.setFont(new Font("Microsoft Sans Serif", Font.BOLD,20));
+	  		Y1.setSize(400, 50);
+	  		Y1.setBounds(280, 290, 150, 35); //x y width height
+	  		Y1.setFocusable(true);
+	  		Y1.addActionListener(this);
+	  		Y1.setVisible(true);
+	  		
+	  		Y2.setFont(new Font("Microsoft Sans Serif", Font.BOLD,20));
+	  		Y2.setSize(400, 50);
+	  		Y2.setBounds(280, 350, 150, 35); //x y width height
+	  		Y2.setFocusable(true);
+	  		Y2.addActionListener(this);
+	  		Y2.setVisible(true);
+		  	
+	  		Y3.setFont(new Font("Microsoft Sans Serif", Font.BOLD,20));
+	  		Y3.setSize(400, 50);
+	  		Y3.setBounds(450, 290, 150, 35); //x y width height
+	  		Y3.setFocusable(true);
+	  		Y3.addActionListener(this);
+	  		Y3.setVisible(true);
+		  	
+	  		Y4.setFont(new Font("Microsoft Sans Serif", Font.BOLD,20));
+	  		Y4.setSize(400, 50);
+	  		Y4.setBounds(450, 350, 150, 35); //x y width height
+	  		Y4.setFocusable(true);
+	  		Y4.addActionListener(this);
+	  		Y4.setVisible(true);
+	  		
+	  	
+	  		
+			
+	  	
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==home) {
+			frame.dispose();
+			WelcomePage welcomepage = new WelcomePage();
+		}
+		else if(e.getSource()==coursesButton) {
+			frame.dispose();
+			CoursePage CoursePage = new CoursePage();
+		}
+		else if(e.getSource()==Y1) {
+			frame.dispose();
+			BSCPE_1st_Year BSCPE_1st_Year = new BSCPE_1st_Year();
+		}
+		else if(e.getSource()==Y2) {
+			frame.dispose();
+			BSCPE_2nd_Year BSCPE_2nd_Year = new BSCPE_2nd_Year();
+		}
+		else if(e.getSource()==Y3) {
+			frame.dispose();
+			BSCPE_3rd_Year BSCPE_3rd_Year = new BSCPE_3rd_Year();
+		}
+		else if(e.getSource()==Y4) {
+			frame.dispose();
+			BSCPE_4th_Year BSCPE_4th_Year = new BSCPE_4th_Year();
+		}
+		else if(e.getSource()==logout) {
+			
+			int option = JOptionPane.showConfirmDialog(null, "Do you Log Out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+			
+			if (option == JOptionPane.YES_OPTION) {
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+	            frame.dispose();
+	            LogInPage LogInPage = new LogInPage(null);
+	           
+	            
+			}
+			else if (option == JOptionPane.NO_OPTION) {
+	            System.out.println("You're going back to the page");
+	            
+	        } 
+			
+		}
+	}
+}

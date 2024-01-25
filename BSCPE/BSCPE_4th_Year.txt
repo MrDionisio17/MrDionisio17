@@ -1,0 +1,232 @@
+package BSCPEYearLevels;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import LogIn.CoursePage;
+import LogIn.LogInPage;
+import LogIn.WelcomePage;
+
+public class BSCPE_4th_Year implements ActionListener {
+	
+	JFrame frame = new JFrame();
+	JTable table = new JTable();
+	Object[] columns = {"Name","Programming","Chemistry","UTS"};
+	Object[] rows = new Object[4];
+	DefaultTableModel model = new DefaultTableModel();
+	
+	 JTextField textName = new JTextField();
+	 JTextField SN = new JTextField(); //student Number
+	 JTextField address = new JTextField();
+	 JTextField Birthdate = new JTextField();
+
+	 JLabel name = new JLabel("Name:");
+	 JLabel prog = new JLabel("Programming:");
+	 JLabel chem = new JLabel("Chemistry:");
+	 JLabel uts = new JLabel("UTS:");
+	 
+	 JButton add = new JButton("add");
+	 JButton del = new JButton("delete");
+	 
+	 
+	JButton logout = new JButton("Log out");
+	JButton home = new JButton("Home");	 
+	JButton coursesButton = new JButton("Courses"); 
+	ImageIcon logo = new ImageIcon("Logo1.png");
+	
+	JScrollPane scroll = new JScrollPane(table);
+	 
+	 public BSCPE_4th_Year(){
+		 frame.setTitle("BSCPE");
+			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+			frame.setIconImage(logo.getImage());
+			frame.setResizable(true);
+			frame.setSize(1200, 800);
+			frame.setBounds(400, 50, 1000, 800);
+			frame.getContentPane().setLayout(null);
+		    frame.setIconImage(logo.getImage());
+		    frame.setLocationRelativeTo(null);
+		    frame.getContentPane().setBackground(new Color(228, 238, 254 ));
+		    frame.getContentPane().setForeground(new Color(228, 238, 254 ));
+		   
+		   // components
+		    frame.add(logout);
+		    frame.add(coursesButton);
+		    frame.add(home);
+		    frame.getContentPane().add(scroll);
+		    frame.add(table);
+		    
+		    //table
+		    table.setBounds(30, 50, 900,750);
+		    
+		    
+		    //columns
+		    model.setColumnIdentifiers(columns);
+		    table.setModel(model);
+		    table.setForeground(new Color(0, 0, 0 ));
+		    table.setBackground(new Color(199, 199, 199  ));
+		    table.setSelectionBackground(new Color(185, 185, 185 ));
+		    table.setGridColor(new Color(62, 62, 62  ));
+		    table.setSelectionForeground(new Color(17, 17, 17  ));	
+		    table.setFont(new Font("Microsoft JhengHei UI",Font.PLAIN,15));
+		   
+		    table.setRowHeight(23);
+		    table.setAutoCreateRowSorter(true);
+		    
+		    JScrollPane pane = new JScrollPane(table);
+		    pane.setForeground(Color.RED);
+		    pane.setBackground(Color.WHITE);
+		    pane.setBounds(30,50,900,500); 
+		    frame.getContentPane().add(pane);
+		   /* 
+		    scroll.setForeground(new Color(185, 182, 180 ));
+		    scroll.setBackground(new Color(218, 215, 211 ));
+		    scroll.setBounds(1170, 770, 10, 10);
+		    frame.getContentPane().add(scroll);
+		    */
+		   
+		    //name
+		   JTextField textName = new JTextField();
+		   textName.setBounds(100, 600, 250,35); // x y w h
+		   frame.getContentPane().add(textName);
+		   textName.setColumns(10);
+		  
+		   
+		   JTextField UTS = new JTextField();
+		   UTS.setBounds(100, 650, 85,35);
+		   frame.getContentPane().add(UTS);
+		   UTS.setColumns(10);
+		   
+		   JTextField programming = new JTextField();
+		   programming.setBounds(700, 600, 85,35);
+		   frame.getContentPane().add(programming);
+		   programming.setColumns(10);
+		   
+		   JTextField Chemistry = new JTextField();
+		   Chemistry.setBounds(700, 650, 85,35);
+		   frame.getContentPane().add(Chemistry);
+		   Chemistry.setColumns(10);
+		   
+		   		   
+		   name.setFont(null);
+		   name.setFont(new Font("Microsoft JhengHei UI",Font.PLAIN,16));
+		   name.setForeground(new Color(0,0,0));
+		   name.setBounds(50, 600, 105, 30);// x y w h
+		   frame.getContentPane().add(name);
+		   
+		   uts.setFont(null);
+		   uts.setFont(new Font("Microsoft JhengHei UI",Font.PLAIN,16));
+		   uts.setForeground(new Color(0,0,0));
+		   uts.setBounds(50, 650, 105, 30);// x y w h
+		   frame.getContentPane().add(uts);
+		   
+		   chem.setFont(null);
+		   chem.setFont(new Font("Microsoft JhengHei UI",Font.PLAIN,16));
+		   chem.setForeground(new Color(0,0,0));
+		   chem.setBounds(550, 650, 105, 30);// x y w h
+		   frame.getContentPane().add(chem);
+		   
+		   prog.setFont(null);
+		   prog.setFont(new Font("Microsoft JhengHei UI",Font.PLAIN,16));
+		   prog.setForeground(new Color(0,0,0));
+		   prog.setBounds(550, 600, 135, 30);// x y w h
+		   frame.getContentPane().add(prog);
+		   
+		   
+		   
+		    
+		    home.setSize(400, 50);
+		  	home.setBounds(10, 20, 90, 20);
+		  	home.setFocusable(true);
+		 	home.addActionListener(this);
+		 	
+		 	coursesButton.setSize(400, 50);
+		 	coursesButton.setBounds(105, 20, 90, 20); // x y width height
+		 	coursesButton.setFocusable(true);
+		  	coursesButton.addActionListener(this);
+		  	
+		  	add.setBounds(550, 700, 295, 35);
+		  	frame.getContentPane().add(add);
+		  	add.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					rows[0] = textName.getText();
+					rows[1] = programming.getText();//UTS
+					rows[2] = Chemistry.getText();
+					rows[3] =  UTS.getText();//programming
+					
+					model.addRow(rows);
+				}
+				});
+		  	
+		  	del.setBounds(50, 700, 295, 35);
+		  	frame.getContentPane().add(del);
+		  	del.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int i = table.getSelectedRow();
+					if(i>=0) {
+						model.removeRow(i);
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(frame, "Delete Error");
+					}
+				}
+				});
+		  	frame.revalidate();
+		  	
+		  //logout
+		  	logout.setSize(400,50);
+		  	logout.setBounds(200, 20, 90, 20); // x y width height
+			logout.setFocusable(true);
+	  		logout.addActionListener(this);
+	  		
+	  		
+	  		
+	  		
+	 }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==home) {
+			frame.dispose();
+			WelcomePage welcomepage = new WelcomePage();
+		}
+		else if(e.getSource()==coursesButton) {
+			frame.dispose();
+			CoursePage CoursePage = new CoursePage();
+		}
+else if(e.getSource()==logout) {
+			
+			int option = JOptionPane.showConfirmDialog(null, "Do you Log Out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+			
+			if (option == JOptionPane.YES_OPTION) {
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+	            frame.dispose();
+	            LogInPage LogInPage = new LogInPage(null);
+	            
+			}
+			else if (option == JOptionPane.NO_OPTION) {
+	            System.out.println("You're going back to the page");
+	            
+	        } 
+			
+		}	
+		}
+	
+
+}

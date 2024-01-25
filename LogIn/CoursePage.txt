@@ -1,0 +1,120 @@
+package LogIn;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+import javafx.scene.paint.Color;
+
+public class CoursePage implements ActionListener {
+	
+	//frame
+	JFrame frame = new JFrame();
+	JButton bscpe = new JButton("Bachelor of Science in Computer Engineering (BSCPE)");
+	JButton bsit = new JButton("Bachelor of Science in Information Technology (BSIT)");
+	JButton home = new JButton("Home");
+	JButton logout = new JButton("Log out");
+	JPanel panel = new JPanel();
+	ImageIcon logo = new ImageIcon("Logo1.png");
+	ImageIcon rog = new ImageIcon("ROG.png");
+	JLabel background = new JLabel(rog);
+	
+	
+	
+	
+	public CoursePage(){
+		//frame attributes
+		
+		frame.setTitle("Course Page");
+		
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+		frame.setIconImage(logo.getImage());
+		frame.setResizable(true);
+		frame.setSize(1700, 900);
+		frame.setBounds(0, 0, 1568, 900);
+		frame.add(bscpe);
+		frame.setLayout(null);
+		frame.add(bsit);
+	    frame.add(home);
+	    frame.setIconImage(logo.getImage());
+	    frame.add(logout);
+	    frame.getContentPane().add(background);
+		
+		
+		//bscpe
+	    bscpe.setFont(new Font("Microsoft Sans Serif", Font.BOLD,20));
+		bscpe.setSize(400, 500);
+		bscpe.setBounds(250, 200, 600, 90); // x y w h
+		bscpe.setFocusable(true);
+		bscpe.addActionListener(this);
+		
+		
+		//bsit
+		bsit.setFont(new Font("Microsoft Sans Serif", Font.BOLD,20));
+		bsit.setSize(400, 500);
+		bsit.setBounds(250, 350, 600, 90); // x y width height
+		//bsit.setBounds(800, 400, 400, 50);
+		bsit.setFocusable(true);
+		bsit.addActionListener(this);
+		
+		//home
+		home.setSize(400, 50);
+		home.setBounds(10, 20, 90, 20); // x y width height
+		home.setFocusable(true);
+		home.addActionListener(this);
+		
+		//logout
+		logout.setSize(400,50);
+		logout.setBounds(110, 20, 90, 20); // x y width height
+		logout.setFocusable(true);
+		logout.addActionListener(this);
+		
+		background.setIcon(rog);
+		//background.setSize(50,50);
+		background.setBounds(0,0, 1560, 900);
+		//background.setHorizontalAlignment(JLabel.CENTER);
+		
+
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==bscpe) {
+			frame.dispose();
+			BSCPE BSCPE = new BSCPE();
+			
+		}
+		else if(e.getSource()==home) {
+			frame.dispose();
+			WelcomePage welcomepage = new WelcomePage();
+		}
+		else if(e.getSource()==bsit) {
+			frame.dispose();
+			BSIT BSIT = new BSIT();
+			
+		}
+		else if(e.getSource()==logout) {
+			
+			int option = JOptionPane.showConfirmDialog(null, "Do you Log Out?", "Confirmation", JOptionPane.YES_NO_OPTION);
+			
+			if (option == JOptionPane.YES_OPTION) {
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit
+	            frame.dispose();
+	            LogInPage LogInPage = new LogInPage(null);
+			}
+			else if (option == JOptionPane.NO_OPTION) {
+	            System.out.println("You're going back to the page");
+	            
+	        } 
+			
+		}
+		
+	}
+
+	
+}
