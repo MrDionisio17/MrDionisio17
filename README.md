@@ -1,3 +1,6 @@
+This is a Student Information System. It is a beta version because it can be developed in the future, but for now, this is it.
+
+
 - 👋 Hi, I’m @MrDionisio17
 - 👀 I’m a Bachelor of Science in Computer Engineering student who is currently studying to make steps in software and hardware development;
 - 🌱 I’m dreaming of some innovative products that will make me rich someday;
